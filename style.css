@@ -1,11 +1,11 @@
 body {
-    font-family: 'Balsamiq Sans', cursive;
+    font-family: 'Roboto', sans-serif;
     background-color: #F0D3F7;
 }
 .flexbox {
     display: flex;
     margin: 5%;
-    font-family: 'Balsamiq Sans', cursive;
+    font-family: 'Roboto', sans-serif;
 }
 header {
     font-size: 30px;
@@ -22,7 +22,7 @@ form {
     width: 20%;
 }
 .vl {
-    border: 3px solid #B98EA7;
+    border: 2px solid #B98EA7;
     border-radius: 5px;
     height: 105vh;
     margin-left: 30px;
@@ -47,16 +47,7 @@ form {
 }
 .bookTitle {
     font-size: 30px;
-    padding-bottom: 10px;
 }
-.middle {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 10px;
-    margin-right: 5px;
-}
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.author {
+    font-size: 22px;
 }

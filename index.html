@@ -7,62 +7,43 @@
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body style="background-color:#F0D3F7;">
   <div class="flexbox">
     <div class="sidebar">
       <header>Library</header>
-      <form>
+      <form name="BookForm">
         <div class="form-group">
           <label for="title">Book Title</label>
-          <input type="text" class="form-control" id="title">
+          <input type="text" class="form-control" id="title" name="title">
         </div>
         <div class="form-group">
           <label for="author">Author</label>
-          <input type="text" class="form-control" id="author">
+          <input type="text" class="form-control" id="author" name="author">
         </div>
         <div class="form-group">
           <label for="pages">Number of Pages</label>
-          <input type="number" class="form-control" id="pages" min="1">
+          <input type="number" class="form-control" id="pages" min="1" name="pages">
         </div>
         <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="readOrNot">
+          <input type="checkbox" class="form-check-input" id="readOrNot" name="read">
           <label class="form-check-label" for="readOrNot">Have you read it?</label>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" id="addBook">Add Book</button>
       </form>
     </div>
     <div class="vl"></div>
     <div class="books">
       <div class="cards">
-        <div class="cardDesign">
-          <div class="bookTitle">Title</div>
-
-          <div class="middle">
-            <div class="author">Author</div>
-            <div class="pageCount">Pages</div>
-          </div>
-          
-          <div class="footer">
-            <div class="status">Status: </div>
-            <button type="button" class="btn btn-info">Toggle</button>
-          </div>
-        </div>
-        <div class="cardDesign">
-          <div class="bookTitle">Title</div>
-          
-          <div class="middle">
-            <div class="author">Author</div>
-            <div class="pageCount">Pages</div>
-          </div>
-          
-          <div class="footer">
-            <div class="status">Status: </div>
-            <button type="button" class="btn btn-info">Toggle</button>
-          </div>
-        </div>
+        <!-- <div class="cardDesign">
+          <p class="bookTitle">Title</p>
+          <p class="author">Author</p>
+          <p class="pageCount">Pages</p>
+          <p class="status">Status: </p>
+          <button type="button" class="btn btn-info">Toggle</button>
+        </div> -->
       </div>
     </div>
   </div>
