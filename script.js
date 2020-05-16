@@ -1,9 +1,6 @@
-let myLibrary = [
-    //{title: "hi", author: "hihi", pages: "12", read: "have read"}
-];
+let myLibrary = [];
 let cards = document.querySelector(".cards");
 const addBookBtn = document.querySelector("#addBook");
-const toggleBtn = document.querySelectorAll("#toggle");
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -45,6 +42,7 @@ function render() {
         toggle.classList.add("btn-info");
         toggle.setAttribute('type', 'button');
         toggle.setAttribute('id', 'toggle');
+        toggle.setAttribute('onclick', 'toggleReadStatus(this.id)');
         toggle.textContent = "Toggle";
         toggle.classList.add("toggle");
         bookCard.appendChild(toggle);
@@ -75,16 +73,20 @@ function isValid(bookTitle, bookAuthor, bookPages) {
     }
     return true;
 }
-function changeReadStatus(id) {
-    let status = document.getElementById(id).previousSibling.textContent;
-    if (status == "I have not read it.") {
-        status = "I have read it."
+function toggleReadStatus(id) {
+    let status = document.getElementById(id).previousElementSibling.textContent;
+    const read = "I have read it."
+    const notRead = "I have not read it."
+    if (status == notRead) {
+        document.querySelector(".status").innerHTML = read;
+        // updateStatus(read);
+        return;
     } else {
-        status = "I have not read it."
+        status = notRead;
+        render();
+        return;
     }
-}
-function debug(e) {
-    return console.log("hi")
+
 }
 
 addBookBtn.addEventListener("click", function() {
@@ -104,6 +106,3 @@ addBookBtn.addEventListener("click", function() {
         clearFields();
     }
 })
-
-const toggleBtns = document.querySelectorAll('.toggle');
-toggleBtns.forEach(toggleBtn => toggleBtn.addEventListener('click', debug));
