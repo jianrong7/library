@@ -3,6 +3,7 @@ let myLibrary = [
 ];
 let cards = document.querySelector(".cards");
 const addBookBtn = document.querySelector("#addBook");
+const toggleBtn = document.querySelectorAll("#toggle");
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -43,7 +44,9 @@ function render() {
         toggle.classList.add("btn");
         toggle.classList.add("btn-info");
         toggle.setAttribute('type', 'button');
+        toggle.setAttribute('id', 'toggle');
         toggle.textContent = "Toggle";
+        toggle.classList.add("toggle");
         bookCard.appendChild(toggle);
 
         cards.appendChild(bookCard);
@@ -72,6 +75,17 @@ function isValid(bookTitle, bookAuthor, bookPages) {
     }
     return true;
 }
+function changeReadStatus(id) {
+    let status = document.getElementById(id).previousSibling.textContent;
+    if (status == "I have not read it.") {
+        status = "I have read it."
+    } else {
+        status = "I have not read it."
+    }
+}
+function debug(e) {
+    return console.log("hi")
+}
 
 addBookBtn.addEventListener("click", function() {
     const readStatus = document.getElementById("readOrNot")
@@ -90,3 +104,6 @@ addBookBtn.addEventListener("click", function() {
         clearFields();
     }
 })
+
+const toggleBtns = document.querySelectorAll('.toggle');
+toggleBtns.forEach(toggleBtn => toggleBtn.addEventListener('click', debug));
