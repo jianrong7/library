@@ -14,6 +14,7 @@ function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(new Book(title, author, pages, read));
 }
 function render() {
+    cards.innerHTML = '';
     myLibrary.forEach((book) => {
         const bookCard = document.createElement("p");
         bookCard.classList.add("cardDesign");
@@ -48,17 +49,44 @@ function render() {
         cards.appendChild(bookCard);
     })
 }
+function clearFields() {
+    document.forms["BookForm"]["title"].value = "";
+    document.forms["BookForm"]["author"].value = "";
+    document.forms["BookForm"]["pages"].value = "";
+}
+function isValid(bookTitle, bookAuthor, bookPages) {
+    if (bookTitle.value === "") {
+        bookTitle.focus();
+        alert("Please enter the title");
+        return false; 
+    }
+    if (bookAuthor.value === "") {
+        bookAuthor.focus();
+        alert("Please enter the author");
+        return false; 
+    }
+    if (bookPages.value === "") {
+        bookPages.focus();
+        alert("Please enter the number of pages");
+        return false; 
+    }
+    return true;
+}
 
 addBookBtn.addEventListener("click", function() {
     const readStatus = document.getElementById("readOrNot")
     let bookTitle = document.forms["BookForm"]["title"];
     let bookAuthor = document.forms["BookForm"]["author"];
     let bookPages = document.forms["BookForm"]["pages"];
+    let bookRead;
     if (readStatus == true) {
-        let bookRead = "have read"
+        bookRead = "have read"
     } else {
-        let bookRead = "have not read"
+        bookRead = "have not read"
     }
-    addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value, bookRead);
-    render();
+    if (isValid(bookTitle, bookAuthor, bookPages)) {
+        addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value, bookRead);
+        render();
+        clearFields();
+    }
 })
