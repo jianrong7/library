@@ -2,6 +2,8 @@ let myLibrary = [];
 let cards = document.querySelector(".cards");
 const addBookBtn = document.querySelector("#addBook");
 
+loadStorage();
+render();
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -10,6 +12,17 @@ function Book(title, author, pages, read) {
 }
 function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(new Book(title, author, pages, read));
+}
+function loadStorage() {
+    if (localStorage.getItem("library")) {
+        myLibrary = JSON.parse(localStorage.getItem("library"));
+
+        for (let i = 0; i < myLibrary.length; i++) {
+            myLibrary[i] = new Book(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].read);
+        }
+    } else {
+        addBookToLibrary("Slaughterhouse-Five", "Kurt Vonnegut", 215, "have read");
+    }
 }
 function render() {
     cards.innerHTML = '';
@@ -79,7 +92,6 @@ function toggleReadStatus(id) {
     const notRead = "I have not read it."
     if (status == notRead) {
         document.querySelector(".status").innerHTML = read;
-        // updateStatus(read);
         return;
     } else {
         status = notRead;
@@ -88,7 +100,6 @@ function toggleReadStatus(id) {
     }
 
 }
-
 addBookBtn.addEventListener("click", function() {
     const readStatus = document.getElementById("readOrNot")
     let bookTitle = document.forms["BookForm"]["title"];
