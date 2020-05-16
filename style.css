@@ -4,7 +4,7 @@ body {
 }
 .flexbox {
     display: flex;
-    margin: 50px;
+    margin: 5%;
     font-family: 'Balsamiq Sans', cursive;
 }
 header {
@@ -19,6 +19,7 @@ form {
 }
 .sidebar {
     color: #120D31;
+    width: 20%;
 }
 .vl {
     border: 3px solid #B98EA7;
@@ -29,6 +30,33 @@ form {
     top: 0;
 }
 .books {
-    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
     color: #120D31;
+}
+.books {
+    width: 70%;
+}
+.cardDesign {
+    background-color: #8391eb;
+    border: 1px solid #495080;
+    border-radius: 5px;
+    padding: 15px 25px;
+    margin-bottom: 30px;
+}
+.bookTitle {
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+.middle {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    margin-right: 5px;
+}
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
