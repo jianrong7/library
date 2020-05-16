@@ -6,11 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
 </head>
 
-<body>
-  hi
+<body style="background-color:#F0D3F7;">
+  <div class="flexbox">
+    <div class="sidebar">
+      <header>Library</header>
+      <form>
+        <div class="form-group">
+          <label for="title">Book Title</label>
+          <input type="text" class="form-control" id="title">
+        </div>
+        <div class="form-group">
+          <label for="author">Author</label>
+          <input type="text" class="form-control" id="author">
+        </div>
+        <div class="form-group">
+          <label for="pages">Number of Pages</label>
+          <input type="number" class="form-control" id="pages" min="1">
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="readOrNot">
+          <label class="form-check-label" for="readOrNot">Have you read it?</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="vl"></div>
+    <div class="books">
+      
+    </div>
+  </div>
+  
 </body>
 <script src="script.js"></script>
 

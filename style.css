@@ -1,3 +1,34 @@
 body {
     font-family: 'Balsamiq Sans', cursive;
+    background-color: #F0D3F7;
+}
+.flexbox {
+    display: flex;
+    margin: 50px;
+    font-family: 'Balsamiq Sans', cursive;
+}
+header {
+    font-size: 30px;
+    font-weight: bold;
+    color: #302F4D;
+    border-bottom: 2px solid #B98EA7;
+    padding-bottom: 15px;
+}
+form {
+    margin-top: 20px;
+}
+.sidebar {
+    color: #120D31;
+}
+.vl {
+    border: 3px solid #B98EA7;
+    border-radius: 5px;
+    height: 105vh;
+    margin-left: 30px;
+    margin-top: -50px;
+    top: 0;
+}
+.books {
+    margin-left: 30px;
+    color: #120D31;
 }
