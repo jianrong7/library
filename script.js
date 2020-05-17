@@ -87,15 +87,14 @@ function isValid(bookTitle, bookAuthor, bookPages) {
     return true;
 }
 function toggleReadStatus(id) {
-    let status = document.getElementById(id).previousElementSibling.textContent;
+    let status = document.getElementById(id).previousElementSibling.innerHTML;
     const read = "I have read it."
     const notRead = "I have not read it."
     if (status == notRead) {
         document.querySelector(".status").innerHTML = read;
         return;
     } else {
-        status = notRead;
-        render();
+        document.querySelector(".status").innerHTML = notRead;
         return;
     }
 
