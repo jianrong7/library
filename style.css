@@ -1,53 +1,64 @@
+html {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #1A3246;
+}
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #F0D3F7;
-}
-.flexbox {
     display: flex;
-    margin: 5%;
-    font-family: 'Roboto', sans-serif;
-}
-header {
-    font-size: 30px;
-    font-weight: bold;
-    color: #302F4D;
-    border-bottom: 2px solid #B98EA7;
-    padding-bottom: 15px;
-}
-form {
-    margin-top: 20px;
 }
 .sidebar {
-    color: #120D31;
-    width: 20%;
-}
-.vl {
-    border: 2px solid #B98EA7;
-    border-radius: 5px;
-    height: 105vh;
-    margin-left: 30px;
-    margin-top: -50px;
-    top: 0;
-}
-.books {
     display: flex;
     flex-direction: column;
-    margin-left: 5%;
-    color: #120D31;
+    width: 30vh;
+    height: 100vh;
+    background-color: #E9C1AF;
+    text-align: center;
 }
-.books {
-    width: 70%;
+.sidebar p {
+    margin: 30px;
+    font-weight: bold;
+    font-size: 40px;
 }
-.cardDesign {
-    background-color: #8391eb;
-    border: 1px solid #495080;
-    border-radius: 5px;
-    padding: 15px 25px;
-    margin-bottom: 30px;
+input {
+    border: 0;
+    margin: 25px;
+    background: transparent;
+    font-size: 20px;
+    font-family: 'Playfair Display', serif;
+    color: black;
+    border-bottom: 2px dashed #1A3246;
 }
-.bookTitle {
-    font-size: 30px;
+textarea:focus, input:focus{
+    outline: none;
 }
-.author {
-    font-size: 22px;
+::placeholder {
+    color: #1A3246;
+}
+#checkbox {
+    background-color: #E9C1AF;
+}
+#submitBtn {
+    background-color: #1A3246;
+    color: #F7F1F0;
+    width: 100px;
+    height: 50px;
+}
+#submitBtn:hover {
+    cursor: pointer;
+}
+/* Checkbox Style */
+
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 30vh;
+    text-align: center;
+    padding: 15px 0px;
+    font-size: 15px;
+    border-top: 2px solid #1A3246;
+}
+.footer a {
+    text-decoration: none;
+    color: #1A3246;
 }
