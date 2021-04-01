@@ -6,5 +6,5 @@ Using HTMl, CSS and Javascript.
 UI Concept Idea from [here](https://mooniidev.github.io/library/).
 
 ### To-Do List
-- Done first prototype of side bar
-- Create main grid of library
+- Add New Book Function
+- Add transition to 'Remove All' button

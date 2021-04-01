@@ -3,21 +3,22 @@ let myLibrary = [
         title: "Hello",
         author: "World",
         pages: 123,
-        status: true;
+        status: true
     },
     {
         title: "Goodbye",
         author: "Sir",
         pages: 456,
-        status: false;
+        status: false
     },
     {
         title: "ecks",
         author: "deee",
         pages: 987,
-        status: false;
+        status: false
     }
 ];
+const mainTable = document.querySelector('.mainTable')
 
 function Book(title, author, pages, status) {
     this.title = title;
@@ -32,5 +33,33 @@ function addBookToLibrary(title, author, pages, status) {
 }
 
 function displayBooksInLibrary() {
+    myLibrary.forEach(book => {
+        let tableRow = document.createElement('tr')
+        // Title
+        let titleData = document.createElement('td')
+        titleData.innerText = book.title
+        tableRow.appendChild(titleData)
 
+        // Author
+        let authorData = document.createElement('td')
+        authorData.innerText = book.author
+        tableRow.appendChild(authorData)
+
+        // Pages
+        let pagesData = document.createElement('td')
+        pagesData.innerText = book.pages
+        tableRow.appendChild(pagesData)
+
+        // Status
+        let statusData = document.createElement('td')
+        statusData.innerText = book.status
+        tableRow.appendChild(statusData)
+
+        // Remove Button
+        let removeButton = document.createElement('td')
+        removeButton.innerText = "Remove"
+        tableRow.appendChild(removeButton)
+        
+        mainTable.appendChild(tableRow)
+    })
 }

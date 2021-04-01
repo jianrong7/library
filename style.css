@@ -9,7 +9,8 @@ body {
 .sidebar {
     display: flex;
     flex-direction: column;
-    width: 30vh;
+    flex-wrap: nowrap;
+    width: 300px;
     height: 100vh;
     background-color: #E9C1AF;
     text-align: center;
@@ -42,11 +43,54 @@ textarea:focus, input:focus{
     color: #F7F1F0;
     width: 100px;
     height: 50px;
+    padding: 12px;
+    border-radius: 10px;
 }
 #submitBtn:hover {
     cursor: pointer;
 }
-/* Checkbox Style */
+.main {
+    text-align: center;
+    width: calc(100% - 300px);
+}
+.topBar {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+    align-items: center;
+}
+.removeAll {
+    border: none;
+    color: #F7F1F0;
+    padding: 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    background-color: rgb(185, 67, 67);
+    font-family: 'Playfair Display', serif;
+}
+.removeAll:hover {
+    cursor: pointer;
+}
+.removeAll:focus, .removeAll:focus{
+    outline: none;
+}
+.mainTable {
+    text-align: center;
+    left: 0;
+    margin: auto;
+    width: 80%;
+}
+th {
+    background-color: #1A3246;
+    color: #F7F1F0;
+    padding: 15px;
+}
+td {
+    padding: 20px;
+    border-bottom: 2px dashed #1A3246;
+}
 
 /* Footer */
 .footer {
