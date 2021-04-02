@@ -6,5 +6,12 @@ Using HTMl, CSS and Javascript.
 UI Concept Idea from [here](https://mooniidev.github.io/library/).
 
 ### To-Do List
-- Add New Book Function
+- Add Change Read Book Status Function
+- Add save to local storage function
+- Maybe look at saving to cloud
+- Add form validation function
+- Improve aesthetics
+- Add favicon
+- Add read book and unread books counter
+- Dark mode
 - Add transition to 'Remove All' button
