@@ -68,11 +68,21 @@ function validateForm(e) {
     console.log(jsonObject)
     console.log(jsonObject['title'])
     if ('status' in jsonObject) {
-        addBookToLibrary(jsonObject['title'], jsonObject['author'], jsonObject['pages'], "Yes")
+        addBookToLibrary(jsonObject['title'], jsonObject['author'],
+            jsonObject['pages'], "Yes")
     } else {
-        addBookToLibrary(jsonObject['title'], jsonObject['author'], jsonObject['pages'], "No")
+        addBookToLibrary(jsonObject['title'], jsonObject['author'], 
+            jsonObject['pages'], "No")
     }
     form.reset()
+}
+function deleteBook(dataset) {
+    myLibrary.forEach(book => {
+        if (book.dataset == dataset) {
+            let index = myLibrary.indexOf(book)
+            myLibrary.splice(index, 1)
+        }
+    })
 }
 function updateCounter() {
     const totalCount = document.querySelector('.totalCounter')
@@ -90,14 +100,8 @@ document.addEventListener('click', (event) => {
         updateCounter()
     }
     if (target.id === 'trashBin') {
-        let dataset = target.parentElement.parentElement.parentElement.dataset.set
-        console.log(target.parentElement.parentElement.parentElement.dataset.set)
-        myLibrary.forEach(book => {
-            if (book.dataset == dataset) {
-                let index = myLibrary.indexOf(book)
-                myLibrary.splice(index, 1)
-            }
-        })
+        let dataset = target.parentElement.parentElement.parentElement.dataset.set 
+        deleteBook(dataset)
         displayBooksInLibrary()
         updateCounter()
     }
