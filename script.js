@@ -26,12 +26,10 @@ function Book(title, author, pages, status) {
     this.pages = pages;
     this.status = status;
 }
-
 function addBookToLibrary(title, author, pages, status) {
     const book = new Book(title, author, pages, status)
     myLibrary.push(book)
 }
-
 function displayBooksInLibrary() {
     myLibrary.forEach(book => {
         let tableRow = document.createElement('tr')
@@ -63,3 +61,19 @@ function displayBooksInLibrary() {
         mainTable.appendChild(tableRow)
     })
 }
+document.querySelector('#bookForm').addEventListener('submit', (e) => {
+    e.preventDefault()
+    const formData = new FormData(e.target);
+    let checkedValue = document.querySelector('#checkbox').checked;
+    let json = JSON.stringify(Object.fromEntries(formData));
+    console.log(json)
+    if (checkedValue) {
+        json['checked'] = true
+        console.log(json)
+    } else {
+        json['checked'] = "false"
+        console.log(json)
+    }
+    console.log(checkedValue)
+    console.log(json)
+  });
