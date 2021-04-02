@@ -1,4 +1,5 @@
 let myLibrary = [];
+
 const mainTable = document.querySelector('.mainTable')
 
 function Book(title, author, pages, status) {
@@ -6,6 +7,7 @@ function Book(title, author, pages, status) {
     this.author = author;
     this.pages = pages;
     this.status = status;
+    this.dataset = title + author
 }
 function addBookToLibrary(title, author, pages, status) {
     const book = new Book(title, author, pages, status)
@@ -48,6 +50,8 @@ function displayBooksInLibrary() {
         removeBtn.appendChild(removeImg)
         removeData.appendChild(removeBtn)
         tableRow.appendChild(removeData)
+
+        tableRow.setAttribute('data-set', book.dataset)
         
         mainTable.appendChild(tableRow)
     })
@@ -70,13 +74,31 @@ function validateForm(e) {
     }
     form.reset()
 }
+function updateCounter() {
+    const totalCount = document.querySelector('.totalCounter')
+    totalCount.innerHTML = myLibrary.length
+}
 document.addEventListener('click', (event) => {
     const { target } = event;
     if (target.id === 'submitBtn') {
         validateForm(event)
+        updateCounter()
     }
     if (target.id === 'trashAll') {
         myLibrary = []
-        displayBooksInLibrary()   
+        displayBooksInLibrary()
+        updateCounter()
+    }
+    if (target.id === 'trashBin') {
+        let dataset = target.parentElement.parentElement.parentElement.dataset.set
+        console.log(target.parentElement.parentElement.parentElement.dataset.set)
+        myLibrary.forEach(book => {
+            if (book.dataset == dataset) {
+                let index = myLibrary.indexOf(book)
+                myLibrary.splice(index, 1)
+            }
+        })
+        displayBooksInLibrary()
+        updateCounter()
     }
 })
