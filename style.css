@@ -86,17 +86,33 @@ th {
     background-color: #1A3246;
     color: #F7F1F0;
     padding: 15px;
+    width: 20%;
 }
 td {
     padding: 20px;
     border-bottom: 2px dashed #1A3246;
+    width: 20%;
 }
-
+#trashBin {
+    width: 22px;
+    height: 22px;
+}
+.remove {
+    border: none;
+    display: inline-block;
+    background-color: transparent;
+}
+.remove:hover {
+    cursor: pointer;
+}
+.remove:focus, .remove:focus{
+    outline: none;
+}
 /* Footer */
 .footer {
     position: fixed;
     bottom: 0;
-    width: 30vh;
+    width: 300px;
     text-align: center;
     padding: 15px 0px;
     font-size: 15px;
