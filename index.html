@@ -10,6 +10,8 @@
   <link href="reset.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="shortcut icon" href="assets/favicon.png"/>
+
   <!-- Playfair Display Font -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 </head>
@@ -18,9 +20,9 @@
   <div class="sidebar">
     <p>Library</p>
     <form action="" method="post" id="bookForm">
-      <input type="text" name="title" placeholder="Name of book">
-      <input type="text" name="author" placeholder="Name of author">
-      <input type="number" name="pages" placeholder="Number of pages"><br>
+      <input type="text" name="title" placeholder="Name of book" required/>
+      <input type="text" name="author" placeholder="Name of author" required/>
+      <input type="number" name="pages" placeholder="Number of pages" required/><br>
       <label id="readLabel">Read?</label>
       <input type="checkbox" id="checkbox" name="status" default="false"><br>
       <input type="submit" id="submitBtn" value="Submit">
@@ -45,7 +47,11 @@
         <td>Hello</td>
         <td>World</td>
         <td>123</td>
-        <td>Yes</td>
+        <td>
+          <button class="readStatus">
+            Read
+          </button>
+        </td>
         <td>
           <button class="remove">
           <img src="assets/trashBin.png" id="trashBin">
@@ -56,7 +62,11 @@
         <td>Goodbye</td>
         <td>Sir</td>
         <td>456</td>
-        <td>No</td>
+        <td>
+          <button class="readStatus">
+            Reading
+          </button>
+        </td>
         <td>
           <button class="remove">
           <img src="assets/trashBin.png" id="trashBin">
@@ -67,7 +77,11 @@
         <td>Hehe</td>
         <td>Ecks Dee</td>
         <td>543</td>
-        <td>No</td>
+        <td>
+          <button class="readStatus">
+            Read
+          </button>
+        </td>
         <td>
           <button class="remove">
           <img src="assets/trashBin.png" id="trashBin">

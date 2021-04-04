@@ -37,7 +37,15 @@ function displayBooksInLibrary() {
 
         // Status
         let statusData = document.createElement('td')
-        statusData.innerText = book.status
+        let statusBtn = document.createElement('button')
+        statusBtn.classList.add('readStatus')
+        statusBtn.innerHTML = book.status
+        if (book.status === "Read") {
+            statusBtn.style.backgroundColor = "rgb(37, 160, 37)"
+        } else {
+            statusBtn.style.backgroundColor = "rgb(185, 67, 67)"
+        }
+        statusData.appendChild(statusBtn)
         tableRow.appendChild(statusData)
 
         // Remove Button
@@ -69,10 +77,10 @@ function validateForm(e) {
     console.log(jsonObject['title'])
     if ('status' in jsonObject) {
         addBookToLibrary(jsonObject['title'], jsonObject['author'],
-            jsonObject['pages'], "Yes")
+            jsonObject['pages'], "Read")
     } else {
         addBookToLibrary(jsonObject['title'], jsonObject['author'], 
-            jsonObject['pages'], "No")
+            jsonObject['pages'], "Reading")
     }
     form.reset()
 }
@@ -83,6 +91,25 @@ function deleteBook(dataset) {
             myLibrary.splice(index, 1)
         }
     })
+}
+function updateRead(dataset) {
+    if (target.innerHTML === "Reading") {
+        myLibrary.forEach(book => {
+            if (book.dataset == dataset) {
+                book.status = "Read"
+                target.innerHTML = book.status
+                target.style.backgroundColor = "rgb(37, 160, 37)";
+            }
+        })
+    } else {
+        myLibrary.forEach(book => {
+            if (book.dataset == dataset) {
+                book.status = "Reading"
+                target.innerHTML = book.status
+                target.style.backgroundColor = "rgb(185, 67, 67)";
+            }
+        })
+    }
 }
 function updateCounter() {
     const totalCount = document.querySelector('.totalCounter')
@@ -104,5 +131,9 @@ document.addEventListener('click', (event) => {
         deleteBook(dataset)
         displayBooksInLibrary()
         updateCounter()
+    }
+    if (target.classList.contains('readStatus')) {
+        let dataset = target.parentElement.parentElement.dataset.set
+        updateRead(dataset)
     }
 })
