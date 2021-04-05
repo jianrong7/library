@@ -6,7 +6,7 @@ if (localStorage.getItem('books') === null) {
     const booksFromStorage = JSON.parse(localStorage.getItem('books'));
     myLibrary = booksFromStorage;
 }
-
+let darkMode = false;
 const mainTable = document.querySelector('.mainTable')
 
 function Book(title, author, pages, status) {
@@ -81,18 +81,26 @@ function displayBooksInLibrary() {
 function validateForm(e) {
     e.preventDefault()
     const form = document.querySelector('#bookForm')
-    const formData = new FormData(form);
-    let json = JSON.stringify(Object.fromEntries(formData));
-    let jsonObject = JSON.parse(json)
-
-    if ('status' in jsonObject) {
-        addBookToLibrary(jsonObject['title'], jsonObject['author'],
-            jsonObject['pages'], "Read")
+    const titleInput = document.querySelector('#titleInput')
+    const authorInput = document.querySelector('#authorInput')
+    const pagesInput = document.querySelector('#pagesInput')
+    if (titleInput.value !== '' && authorInput.value !== '' && pagesInput.value !== '' && pagesInput.value > 0) {
+        const formData = new FormData(form);
+        let json = JSON.stringify(Object.fromEntries(formData));
+        let jsonObject = JSON.parse(json)
+    
+        if ('status' in jsonObject) {
+            addBookToLibrary(jsonObject['title'], jsonObject['author'],
+                jsonObject['pages'], "Read")
+        } else {
+            addBookToLibrary(jsonObject['title'], jsonObject['author'], 
+                jsonObject['pages'], "Reading")
+        }
+        form.reset()
     } else {
-        addBookToLibrary(jsonObject['title'], jsonObject['author'], 
-            jsonObject['pages'], "Reading")
+        alert('Please fill out the form')
     }
-    form.reset()
+
 }
 function deleteBook(dataset) {
     myLibrary.forEach(book => {
@@ -157,6 +165,7 @@ function darkModeToggle(target) {
             input.style.setProperty("--c", "#1A3246");
             input.style.color = "#1A3246"
         })
+        submitBtn.style.color = "#F7F1F0"
         footer.style.borderTop = "2px solid #1A3246"
         footer.firstElementChild.style.color = "#1A3246"
         main.style.backgroundColor = "white"
@@ -174,6 +183,7 @@ function darkModeToggle(target) {
             input.style.setProperty("--c", "#F7F1F0");
             input.style.color = "#F7F1F0"
         })
+        submitBtn.style.color = "#F7F1F0"
         footer.style.borderTop = "2px solid #F7F1F0"
         footer.firstElementChild.style.color = "#F7F1F0"
         main.style.backgroundColor = "#303030"
@@ -183,10 +193,10 @@ function darkModeToggle(target) {
         darkMode = true
     }
 }
-let darkMode = false;
+
 document.addEventListener('click', (event) => {
     const { target } = event;
-    
+    const inputs = document.querySelectorAll('.input')
     if (target.id === 'submitBtn') {
         validateForm(event)
         updateCounter()
