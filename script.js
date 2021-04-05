@@ -67,14 +67,10 @@ function displayBooksInLibrary() {
 function validateForm(e) {
     e.preventDefault()
     const form = document.querySelector('#bookForm')
-    console.log(form)
     const formData = new FormData(form);
     let json = JSON.stringify(Object.fromEntries(formData));
     let jsonObject = JSON.parse(json)
 
-
-    console.log(jsonObject)
-    console.log(jsonObject['title'])
     if ('status' in jsonObject) {
         addBookToLibrary(jsonObject['title'], jsonObject['author'],
             jsonObject['pages'], "Read")
@@ -92,7 +88,7 @@ function deleteBook(dataset) {
         }
     })
 }
-function updateRead(dataset) {
+function updateRead(dataset, target) {
     if (target.innerHTML === "Reading") {
         myLibrary.forEach(book => {
             if (book.dataset == dataset) {
@@ -112,8 +108,16 @@ function updateRead(dataset) {
     }
 }
 function updateCounter() {
-    const totalCount = document.querySelector('.totalCounter')
-    totalCount.innerHTML = myLibrary.length
+    const counters = document.querySelectorAll('.counter')
+    counters.forEach(counter => {
+        if (counter.classList.contains('totalCounter')) {
+            counter.innerHTML = myLibrary.length
+        } else if (counter.classList.contains('finishedCounter')) {
+            counter.innerHTML = myLibrary.filter(book => book.status === "Read").length
+        } else {
+            counter.innerHTML = myLibrary.filter(book => book.status === "Reading").length
+        }
+    })
 }
 document.addEventListener('click', (event) => {
     const { target } = event;
@@ -134,6 +138,19 @@ document.addEventListener('click', (event) => {
     }
     if (target.classList.contains('readStatus')) {
         let dataset = target.parentElement.parentElement.dataset.set
-        updateRead(dataset)
+        updateRead(dataset, target)
+        updateCounter()
     }
 })
+// document.addEventListener('load', () => {
+//     const counters = document.querySelectorAll('.counter')
+//     counters.forEach(counter => {
+//         if (counter.classList.contains('totalCounter')) {
+//             counter.innerHTML = myLibrary.length
+//         } else if (counter.classList.contains('finishedCounter')) {
+//             counter.innerHTML = myLibrary.filter(book => book.status === "Read").length
+//         } else {
+//             counter.innerHTML = myLibrary.filter(book => book.status === "Reading").length
+//         }
+//     })
+// })

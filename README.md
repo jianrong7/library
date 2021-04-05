@@ -10,7 +10,5 @@ UI Concept Idea from [here](https://mooniidev.github.io/library/).
 - Maybe look at saving to cloud
 - Add form validation function
 - Improve aesthetics
-- Add favicon
-- Add read book and unread books counter
 - Dark mode
 - Add transition to 'Remove All' button
