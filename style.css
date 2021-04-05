@@ -73,9 +73,16 @@ textarea:focus, input:focus{
 }
 .topBar {
     display: flex;
-    justify-content: space-around;
+    flex-flow: row nowrap;
+    justify-content: space-between;
     padding: 30px;
+    width: 80%;
     align-items: center;
+    left: 0;
+    margin: auto;
+}
+.topBar span {
+    width: 220px;
 }
 .removeAll {
     border: none;

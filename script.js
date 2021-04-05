@@ -205,10 +205,12 @@ document.addEventListener('click', (event) => {
     if (target.classList.contains('readStatus')) {
         let dataset = target.parentElement.parentElement.dataset.set
         updateRead(dataset, target)
+        displayBooksInLibrary()
         updateCounter()
     }
     if (target.classList.contains('modePic')) {
         darkModeToggle(target)
+        displayBooksInLibrary()
     }
 })
 updateCounter();
