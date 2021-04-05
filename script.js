@@ -1,4 +1,11 @@
 let myLibrary = [];
+// GET BOOKS FROM LOCAL STORAGE
+if (localStorage.getItem('books') === null) {
+    myLibrary = [];
+} else {
+    const booksFromStorage = JSON.parse(localStorage.getItem('books'));
+    myLibrary = booksFromStorage;
+}
 
 const mainTable = document.querySelector('.mainTable')
 
@@ -18,6 +25,7 @@ function displayBooksInLibrary() {
     while (mainTable.rows.length > 1) {
         mainTable.deleteRow(1);
     }
+    localStorage.setItem('books', JSON.stringify(myLibrary));
     myLibrary.forEach(book => {
         let tableRow = document.createElement('tr')
         // Title
@@ -203,6 +211,5 @@ document.addEventListener('click', (event) => {
         darkModeToggle(target)
     }
 })
-document.addEventListener('load', () => {
-    updateCounter()
-})
+updateCounter();
+displayBooksInLibrary()
