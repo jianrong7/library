@@ -60,8 +60,14 @@ function displayBooksInLibrary() {
         tableRow.appendChild(removeData)
 
         tableRow.setAttribute('data-set', book.dataset)
-        
+
         mainTable.appendChild(tableRow)
+        if (darkMode) {
+            const td = document.querySelectorAll('td')
+            td.forEach(data => {
+                data.style.borderBottom = '2px dashed var(--cream)';
+            })
+        }
     })
 }
 function validateForm(e) {
@@ -95,6 +101,9 @@ function updateRead(dataset, target) {
                 book.status = "Read"
                 target.innerHTML = book.status
                 target.style.backgroundColor = "rgb(37, 160, 37)";
+                if (darkMode) {
+                    target.parentElement.style.borderBottom = "2px dashed #F7F1F0";
+                }
             }
         })
     } else {
@@ -103,6 +112,9 @@ function updateRead(dataset, target) {
                 book.status = "Reading"
                 target.innerHTML = book.status
                 target.style.backgroundColor = "rgb(185, 67, 67)";
+                if (darkMode) {
+                    target.parentElement.style.borderBottom = "2px dashed #F7F1F0";
+                }
             }
         })
     }
@@ -119,8 +131,54 @@ function updateCounter() {
         }
     })
 }
+function darkModeToggle(target) {
+    const html = document.querySelector('html')
+    const sidebar = document.querySelector('.sidebar')
+    const submitBtn = document.querySelector('#submitBtn')
+    const inputs = document.querySelectorAll('input')
+    const footer = document.querySelector('.footer')
+    const main = document.querySelector('.main')
+    const td = document.querySelectorAll('td')
+    if (darkMode) {
+        target.src = "assets/sun.png"
+        sidebar.style.backgroundColor = "#E9C1AF"
+        html.style.color = "#1A3246"
+        submitBtn.style.backgroundColor = "#1A3246"
+        inputs.forEach(input => {
+            input.style.borderBottom = "2px dashed #1A3246"
+            input.style.setProperty("--c", "#1A3246");
+            input.style.color = "#1A3246"
+        })
+        footer.style.borderTop = "2px solid #1A3246"
+        footer.firstElementChild.style.color = "#1A3246"
+        main.style.backgroundColor = "white"
+        td.forEach(data => {
+            data.style.borderBottom = '2px dashed var(--blue)';
+        })
+        darkMode = false
+    } else {
+        target.src = "assets/moon.png"
+        sidebar.style.backgroundColor = "#424242"
+        html.style.color = "#F7F1F0"
+        submitBtn.style.backgroundColor = "#3f5ca6"
+        inputs.forEach(input => {
+            input.style.borderBottom = "2px dashed #3f5ca6"
+            input.style.setProperty("--c", "#F7F1F0");
+            input.style.color = "#F7F1F0"
+        })
+        footer.style.borderTop = "2px solid #F7F1F0"
+        footer.firstElementChild.style.color = "#F7F1F0"
+        main.style.backgroundColor = "#303030"
+        td.forEach(data => {
+            data.style.borderBottom = '2px dashed var(--cream)';
+        })
+        darkMode = true
+    }
+}
+let darkMode = false;
 document.addEventListener('click', (event) => {
     const { target } = event;
+    
     if (target.id === 'submitBtn') {
         validateForm(event)
         updateCounter()
@@ -141,16 +199,10 @@ document.addEventListener('click', (event) => {
         updateRead(dataset, target)
         updateCounter()
     }
+    if (target.classList.contains('modePic')) {
+        darkModeToggle(target)
+    }
 })
-// document.addEventListener('load', () => {
-//     const counters = document.querySelectorAll('.counter')
-//     counters.forEach(counter => {
-//         if (counter.classList.contains('totalCounter')) {
-//             counter.innerHTML = myLibrary.length
-//         } else if (counter.classList.contains('finishedCounter')) {
-//             counter.innerHTML = myLibrary.filter(book => book.status === "Read").length
-//         } else {
-//             counter.innerHTML = myLibrary.filter(book => book.status === "Reading").length
-//         }
-//     })
-// })
+document.addEventListener('load', () => {
+    updateCounter()
+})

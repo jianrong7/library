@@ -9,6 +9,4 @@ UI Concept Idea from [here](https://mooniidev.github.io/library/).
 - Add save to local storage function
 - Maybe look at saving to cloud
 - Add form validation function
-- Improve aesthetics
-- Dark mode
 - Add transition to 'Remove All' button

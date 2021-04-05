@@ -1,3 +1,7 @@
+:root {
+    --blue: #1A3246;
+    --cream: #F7F1F0;
+}
 html {
     font-family: 'Playfair Display', serif;
     font-size: 20px;
@@ -20,6 +24,20 @@ body {
     font-weight: bold;
     font-size: 40px;
 }
+.mode {
+    border: none;
+    background-color: transparent;
+}
+.mode:hover {
+    cursor: pointer;
+}
+.mode:focus, .removeAll:focus{
+    outline: none;
+}
+.modePic {
+    height: 20px;
+    width: 20px;
+}
 input {
     border: 0;
     margin: 25px;
@@ -33,7 +51,7 @@ textarea:focus, input:focus{
     outline: none;
 }
 ::placeholder {
-    color: #1A3246;
+    color: var(--c, #1A3246);
 }
 #checkbox {
     background-color: #E9C1AF;
@@ -90,7 +108,7 @@ th {
 }
 td {
     padding: 20px;
-    border-bottom: 2px dashed #1A3246;
+    border-bottom: 2px dashed var(--blue);
     width: 20%;
 }
 #trashBin {
