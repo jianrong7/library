@@ -9,12 +9,21 @@ if (localStorage.getItem('books') === null) {
 let darkMode = false;
 const mainTable = document.querySelector('.mainTable')
 
-function Book(title, author, pages, status) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
-    this.dataset = title + author
+// function Book(title, author, pages, status) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.status = status;
+//     this.dataset = title + author;
+// }
+class Book {
+    constructor(title, author, pages, status) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
+        this.dataset = title + author;
+    }
 }
 function addBookToLibrary(title, author, pages, status) {
     const book = new Book(title, author, pages, status)
