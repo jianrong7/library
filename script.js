@@ -1,3 +1,59 @@
+const firebase = require("firebase");
+// Required for side-effects
+require("firebase/firestore");
+
+// Your web app's Firebase configuration
+var firebaseConfig = {
+    apiKey: "AIzaSyAswdLi51FLLqpZqgkh2NhdJMq0lTVDnbM",
+    authDomain: "library-100fc.firebaseapp.com",
+    projectId: "library-100fc",
+    storageBucket: "library-100fc.appspot.com",
+    messagingSenderId: "26229534934",
+    appId: "1:26229534934:web:1ed0b19400936b65825977"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+// // Initialize Cloud Firestore through Firebase
+// firebase.initializeApp({
+//     apiKey: 'AIzaSyAswdLi51FLLqpZqgkh2NhdJMq0lTVDnbM',
+//     authDomain: 'library-100fc.firebaseapp.com',
+//     projectId: 'library-100fc'
+//  });
+  
+var db = firebase.firestore();
+
+db.collection("users").add({
+    first: "Ada",
+    last: "Lovelace",
+    born: 1815
+})
+.then((docRef) => {
+    console.log("Document written with ID: ", docRef.id);
+})
+.catch((error) => {
+    console.error("Error adding document: ", error);
+});
+
+db.collection("users").add({
+    first: "Alan",
+    middle: "Mathison",
+    last: "Turing",
+    born: 1912
+})
+.then((docRef) => {
+    console.log("Document written with ID: ", docRef.id);
+})
+.catch((error) => {
+    console.error("Error adding document: ", error);
+});
+
+db.collection("users").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
+    });
+});
+
 let myLibrary = [];
 // GET BOOKS FROM LOCAL STORAGE
 if (localStorage.getItem('books') === null) {
